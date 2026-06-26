@@ -1,0 +1,190 @@
+/* Reset basic styles - Using 'Inter' for a clean, premium modern feel */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px; /* Adds a clean modern breathing room to text */
+}
+
+body {
+    background-color: #fcfbfa; 
+    color: #2c2c2c; 
+    line-height: 1.8; /* Slightly more space between lines for elegance */
+    font-weight: 300; /* Makes body text slightly thinner and cleaner */
+}
+
+/* Header & Navigation */
+header {
+    background-color: #1a1a1a; 
+    color: #ffffff;
+    text-align: center;
+    padding: 3rem 0; /* Giving the header more spacious padding */
+}
+
+/* Elegant, thin serif for the main restaurant name */
+header h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 200; /* Ultra thin and premium */
+    letter-spacing: 6px; /* Wide spacing for luxury branding */
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+nav a {
+    color: #bfa8a3; /* Subtler, more elegant muted tone */
+    text-decoration: none;
+    margin: 0 18px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Clean spacing for nav links */
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+/* Headings throughout the page */
+h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+}
+
+/* Red accent line under headings */
+h2::after {
+    content: '';
+    width: 50px;
+    height: 2px;
+    background-color: #bc4749; /* Crimson accent */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Gallery Grid */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Forces exactly 2 equal columns side-by-side */
+    gap: 30px; /* Elegant breathing room between the two images */
+    max-width: 800px; /* Prevents the entire row from stretching too wide on large screens */
+    margin: 2rem auto 0 auto; /* Centers the whole row on the page */
+}
+
+.gallery-item {
+    background: white;
+    border: 1px solid #e4e4e4;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+/* Forces the images inside the cards to lock into a clean landscape aspect ratio */
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Exact height as your original dish photos */
+    object-fit: cover; /* Prevents the images from stretching out of proportion */
+}
+
+/* Reservation Form */
+.reservation-form {
+    max-width: 400px;
+    margin: 2rem auto 0 auto;
+    text-align: left;
+}
+
+.reservation-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.reservation-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #bc4749;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #943436;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #111;
+    color: #666;
+    font-size: 0.8rem;
+}
+.section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+/* ==========================================================================
+   MOBILE RESPONSIVE STYLES (For screens smaller than 768px wide)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Header & Navigation */
+    header {
+        padding: 2rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Slightly smaller text so it doesn't wrap awkwardly */
+        letter-spacing: 4px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px 10px; /* Gives links more tapping room and lets them wrap nicely */
+        font-size: 0.8rem;
+    }
+
+    /* 2. Sections padding */
+    .section {
+        padding: 3rem 1rem; /* Less padding on the sides so text doesn't look squished */
+    }
+
+    /* 3. The Interior Gallery - FIX FOR MOBILE */
+    .gallery-container {
+        grid-template-columns: 1fr; /* Crucial! Changes from 2 columns to 1 single column */
+        gap: 20px;
+        max-width: 100%;
+    }
+    
+    .gallery-item img {
+        height: 200px; /* Slightly shorter image height on mobile screens */
+    }
+
+    /* 4. Reservation Form */
+    .reservation-form {
+        max-width: 100%; /* Allows the form to fill the phone's screen width comfortably */
+        padding: 0 10px;
+    }
+}

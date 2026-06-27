@@ -92,26 +92,26 @@ h2::after {
     object-fit: cover; /* Prevents the images from stretching out of proportion */
 }
 
-/* Reservation Form */
-.reservation-form {
-    max-width: 400px;
-    margin: 2rem auto 0 auto;
-    text-align: left;
-}
-
-.reservation-form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+/* Premium inline Reservation Button Layout */
+.inline-booking-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 15px 40px;
+    background-color: #1a1a1a; /* Dark sleek charcoal */
+    color: #ffffff;
+    text-decoration: none;
     font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Elegant spacing matching your navbar */
+    border: 1px solid #bc4749; /* Thin crimson accent border outline */
+    transition: all 0.3s ease;
 }
 
-.reservation-form input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.inline-booking-btn:hover {
+    background-color: #bc4749; /* Shifts to gorgeous solid crimson on hover */
+    color: #ffffff;
+    transform: translateY(-2px); /* Premium micro-lift effect */
 }
 
 button {

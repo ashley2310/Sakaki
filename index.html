@@ -56,6 +56,22 @@
         </a>
 </section>
 
+<!-- Press / Magazine Feature Section -->
+    <section id="press" class="section press-section">
+        <div class="press-container">
+            <blockquote class="press-quote">
+                "Authentic Japanese restaurant offering top-notch dishes at wallet-friendly prices."
+            </blockquote>
+            
+            <!-- Simple text attribution placed right beneath the quote -->
+            <p class="press-source">— TimeOut Magazine</p>
+            
+            <a href="https://www.timeout.com" target="_blank" class="press-link-btn">
+                Read Full Feature <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
     <section id="contact" class="section bg-dark">
         <h2>Visit Us</h2>
         <p><strong>Address:</strong> 20/F SL GINZA, 68 Electric Road, Tin Hau</p>
@@ -136,111 +152,118 @@
 
     <!-- AI Concierge Chat Box Window -->
     <div id="aiChatBox" class="ai-chat-box">
-        <div class="ai-chat-header">
-            <div class="ai-bot-profile">
-                <!-- Matching Elegant Header Icon -->
-                <div class="ai-avatar-container">
-                    <svg class="elegant-bot-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M14 1.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-13zM10 2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-11zM2 8a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"/>
-                    </svg>
-                </div>
-                <div>
-                    <h4>Sakakibara Concierge</h4>
-                    <span class="ai-status">Online | Instantly Ready</span>
-                </div>
+    <div class="ai-chat-header">
+        <h3>Sakaki Concierge</h3>
+        <span id="closeAiChat" style="cursor:pointer;">✕</span>
+    </div>
+    
+    <!-- Chat Body (Scrollable container) -->
+    <div id="aiChatBox" class="ai-chat-box">
+    <div class="ai-chat-header">
+        <div class="ai-bot-profile">
+            <div class="ai-avatar-container">
+                <svg class="elegant-bot-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M14 1.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-13zM10 2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-11zM2 8a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"/>
+                </svg>
             </div>
-            <span id="closeAiChat" class="ai-close-btn">&times;</span>
-        </div>
-
-        <div id="aiChatBody" class="ai-chat-body">
-            <!-- Greeting Message -->
-            <div class="ai-message bot-msg">
-                Welcome to Sakakibara Sushi. I can instantly assist you with common questions! Select a quick topic below or type a keyword:
-            </div>
-            
-            <!-- Dynamic Response Area -->
-            <div id="aiResponseContainer"></div>
-
-            <!-- Quick Action Interactive Chips -->
-            <div class="ai-quick-chips">
-                <button onclick="askAi('hours')">🕒 Opening Hours</button>
-                <button onclick="askAi('address')">📍 Address & Parking</button>
-                <button onclick="askAi('dishes')">🍣 Signature Dishes</button>
-                <button onclick="askAi('prices')">💰 Average Pricing</button>
-                <button onclick="askAi('booking')">📝 How to Reserve</button>
+            <div>
+                <h4>Sakakibara Concierge</h4>
+                <span class="ai-status">Online</span>
             </div>
         </div>
-
-        <div class="ai-chat-footer">
-            <input type="text" id="aiUserInput" placeholder="Type a keyword (e.g., hours, price)..." onkeypress="handleAiKeyPress(event)">
-            <button id="sendAiMsg" onclick="submitAiText()">Send</button>
+        <span id="closeAiChat" class="close-chat-btn">✕</span>
+    </div>
+    
+    <div id="aiChatBody" class="ai-chat-body">
+        <div id="aiResponseContainer">
+            <div class="ai-message bot-msg">Welcome to Sakakibara. How may I assist you today?</div>
+        </div>
+        
+        <div id="aiOptionsPanel" class="ai-options-panel">
+            <button onclick="askAi('hours')">Opening Hours</button>
+            <button onclick="askAi('address')">Location & Parking</button>
+            <button onclick="askAi('dishes')">Signature Dishes</button>
+            <button onclick="askAi('prices')">Pricing</button>
+            <button onclick="askAi('booking')">Reservations</button>
         </div>
     </div>
 
-    <!-- AI Conversational Script Logic -->
-    <script>
-        const chatTrigger = document.getElementById('aiChatTrigger');
-        const chatBox = document.getElementById('aiChatBox');
-        const closeChat = document.getElementById('closeAiChat');
-        const responseContainer = document.getElementById('aiResponseContainer');
-        const userInput = document.getElementById('aiUserInput');
-        const chatBody = document.getElementById('aiChatBody');
+    <div class="ai-chat-footer-input">
+        <input type="text" id="aiUserInput" placeholder="Type a keyword (e.g., hours)..." onkeypress="handleAiKeyPress(e)">
+        <button onclick="submitAiText()" class="ai-send-btn">Send</button>
+    </div>
+</div>
 
-        // Toggle chat box visibility
-        chatTrigger.addEventListener('click', () => chatBox.classList.add('active'));
-        closeChat.addEventListener('click', () => chatBox.classList.remove('active'));
+ <!-- AI Conversational Script Logic -->
+<!-- AI Conversational Script Logic -->
+<script>
+    const chatTrigger = document.getElementById('aiChatTrigger');
+    const chatBox = document.getElementById('aiChatBox');
+    const closeChat = document.getElementById('closeAiChat');
+    const responseContainer = document.getElementById('aiResponseContainer');
+    const userInput = document.getElementById('aiUserInput');
+    const chatBody = document.getElementById('aiChatBody');
 
-        // Restaurant Knowledge base data dictionary
-        const aiKnowledge = {
-            hours: "🕒 **Opening Hours:**\nWe are open Tuesday through Sunday from 5:00 PM to 10:00 PM. We are closed on Mondays.",
-            address: "📍 **Address:**\n123 Sakura Lane, Food District. Nearby parking is available at the Central Plaza garage directly opposite the restaurant.",
-            dishes: "🍣 **Signature Dishes:**\nOur absolute highlights include our Chef's Omakase Selection (changes daily), Premium Bluefin Tuna Otoro Nigiri, and our signature House-Smoked Wagyu Tataki.",
-            prices: "💰 **Pricing:**\nOur dinner courses generally range between $80 to $150 USD per guest. Our signature lunch sets begin around $45 USD.",
-            booking: "📝 **Reservations:**\nReservations are highly recommended! You can book instantly via our inline portal by clicking the main 'Reserve via inline' button on our page, or text our booking mobile directly using the WhatsApp badge."
-        };
+    // Toggle visibility
+    chatTrigger.addEventListener('click', () => chatBox.classList.add('active'));
+    closeChat.addEventListener('click', () => chatBox.classList.remove('active'));
 
-        function askAi(topic) {
-            if (!aiKnowledge[topic]) return;
-            
-            // Build text conversion for linebreaks
-            const formattedText = aiKnowledge[topic].replace(/\n/g, '<br>');
-            
-            // Render inside container element
-            responseContainer.innerHTML = `
-                <div class="ai-message user-msg">${topic.toUpperCase()}</div>
-                <div class="ai-message bot-msg">${formattedText}</div>
+    const aiKnowledge = {
+        hours: "🕒 **Opening Hours:**\nWe are open Monday through Sunday from 11:45 AM to 10:00 PM.",
+        address: "📍 **Address:**\n20/F SL GINZA, 68 Electric Road, Tin Hau. Parking is available at several nearby commercial garages.",
+        dishes: "🍣 **Signature Dishes:**\nOur highlights include our Premium Omakase Selection, jet-fresh ingredients, and seasonal sashimi pairings.",
+        prices: "💰 **Pricing:**\nOur menu options offer top-notch authentic Japanese dishes at highly accessible, wallet-friendly prices.",
+        booking: "📝 **Reservations:**\nReservations are highly recommended! You can book instantly by clicking the main 'Reserve via inline' button on our page."
+    };
+
+    function askAi(topic) {
+        if (!aiKnowledge[topic]) return;
+
+        let formattedText = aiKnowledge[topic].replace(/\n/g, '<br>');
+        formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        responseContainer.innerHTML += `
+            <div class="ai-message user-msg">${topic.toUpperCase()}</div>
+            <div class="ai-message bot-msg">${formattedText}</div>
+        `;
+
+        const optionsPanel = document.getElementById('aiOptionsPanel');
+        if(optionsPanel) {
+            chatBody.appendChild(optionsPanel);
+        }
+
+        setTimeout(() => { chatBody.scrollTop = chatBody.scrollHeight; }, 50);
+    }
+
+    function submitAiText() {
+        const query = userInput.value.toLowerCase().trim();
+        if (!query) return;
+        
+        let matchedTopic = null;
+        if (query.includes('hour') || query.includes('time') || query.includes('open')) matchedTopic = 'hours';
+        else if (query.includes('address') || query.includes('where') || query.includes('location') || query.includes('park')) matchedTopic = 'address';
+        else if (query.includes('dish') || query.includes('food') || query.includes('signature') || query.includes('eat')) matchedTopic = 'dishes';
+        else if (query.includes('price') || query.includes('cost') || query.includes('menu') || query.includes('how much')) matchedTopic = 'prices';
+        else if (query.includes('book') || query.includes('reserve') || query.includes('seat') || query.includes('inline')) matchedTopic = 'booking';
+
+        if (matchedTopic) {
+            askAi(matchedTopic);
+        } else {
+            responseContainer.innerHTML += `
+                <div class="ai-message user-msg">${userInput.value}</div>
+                <div class="ai-message bot-msg">I didn't quite catch that keyword. Please try using one of the quick buttons below or search for 'hours', 'address', 'dishes', 'price', or 'booking'!</div>
             `;
-            
-            // Smoothly scroll down to show the message
-            setTimeout(() => { chatBody.scrollTop = chatBody.scrollHeight; }, 50);
+            const optionsPanel = document.getElementById('aiOptionsPanel');
+            if(optionsPanel) chatBody.appendChild(optionsPanel);
         }
+        
+        userInput.value = '';
+        setTimeout(() => { chatBody.scrollTop = chatBody.scrollHeight; }, 50);
+    }
 
-        function submitAiText() {
-            const query = userInput.value.toLowerCase().trim();
-            if (!query) return;
-
-            let matchedTopic = null;
-            if (query.includes('hour') || query.includes('time') || query.includes('open')) matchedTopic = 'hours';
-            else if (query.includes('address') || query.includes('where') || query.includes('location') || query.includes('park')) matchedTopic = 'address';
-            else if (query.includes('dish') || query.includes('food') || query.includes('signature') || query.includes('eat')) matchedTopic = 'dishes';
-            else if (query.includes('price') || query.includes('cost') || query.includes('menu') || query.includes('how much')) matchedTopic = 'prices';
-            else if (query.includes('book') || query.includes('reserve') || query.includes('seat') || query.includes('inline')) matchedTopic = 'booking';
-
-            if (matchedTopic) {
-                askAi(matchedTopic);
-            } else {
-                responseContainer.innerHTML = `
-                    <div class="ai-message user-msg">${userInput.value}</div>
-                    <div class="ai-message bot-msg">I didn't quite catch that keyword. Please try using one of the quick buttons below or search for 'hours', 'address', 'dishes', 'price', or 'booking'!</div>
-                `;
-            }
-            userInput.value = '';
-            setTimeout(() => { chatBody.scrollTop = chatBody.scrollHeight; }, 50);
-        }
-
-        function handleAiKeyPress(e) {
-            if (e.key === 'Enter') submitAiText();
-        }
-    </script>
+    function handleAiKeyPress(e) {
+        if (e.key === 'Enter') submitAiText();
+    }
+</script>
 </body>
 </html>

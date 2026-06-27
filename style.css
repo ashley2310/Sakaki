@@ -312,28 +312,30 @@ footer {
 /* Chat Box Panel Window container */
 .ai-chat-box {
     position: fixed;
-    bottom: 150px; /* Raised so it doesn't overlap the stacked buttons */
-    right: 30px;   /* Changed from left: 30px to right: 30px */
-    width: 360px;
-    max-height: 500px;
+    bottom: 90px; /* Sits cleanly right above your floating bottom buttons */
+    right: 20px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    height: 450px;
     background-color: #1a1a1a;
     border: 1px solid #333333;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    z-index: 9999; /* Keeps it above everything else on the screen */
+    
+    /* Hidden by default until active class is added */
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
     pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
 }
 
 .ai-chat-box.active {
     opacity: 1;
-    transform: translateY(0) scale(1);
     pointer-events: auto;
+    transform: translateY(0);
 }
 
 /* Header UI banner */
@@ -370,25 +372,23 @@ footer {
 
 /* Chat Message Bubbles layout style matching graphic UI references */
 .ai-message {
-    padding: 12px 16px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
     border-radius: 8px;
-    font-size: 0.88rem;
-    line-height: 1.5;
     max-width: 85%;
+    line-height: 1.4;
 }
-
-.bot-msg {
-    background-color: #262626;
-    color: #e0e0e0;
-    align-self: flex-start;
-    border-top-left-radius: 2px;
-}
-
 .user-msg {
-    background-color: #bc4749;
+    background-color: #333333;
     color: #ffffff;
     align-self: flex-end;
-    border-top-right-radius: 2px;
+    margin-left: auto; /* Aligns user bubbles to the right side */
+}
+.bot-msg {
+    background-color: #222222;
+    color: #f5f5f5;
+    border: 1px solid #333333;
+    align-self: flex-start;
 }
 
 /* Multi Choice Interactive Action Chips */
@@ -445,6 +445,91 @@ footer {
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 500;
+}
+.ai-options-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 14px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.ai-options-panel button {
+    background-color: #222222;
+    color: #ffffff;
+    border: 1px solid #bc4749;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ai-options-panel button:hover {
+    background-color: #bc4749;
+    color: #ffffff;
+}
+
+/* --- Press / Editorial Feature Section --- */
+.press-section {
+    background-color: #faf9f6; 
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 1px solid #e8e6e1;
+    border-bottom: 1px solid #e8e6e1;
+}
+
+.press-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.press-quote {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+    margin: 0 auto 1rem auto; /* Reduced bottom margin to pull the source closer */
+    font-weight: 300;
+}
+
+/* Styled text source attribution */
+.press-source {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666666;
+    margin-bottom: 2.5rem;
+}
+
+/* Minimal Editorial Link Button */
+.press-link-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.press-link-btn:hover {
+    background-color: #bc4749; 
+    border-color: #bc4749;
+    color: #ffffff;
+}
+
+.press-link-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.press-link-btn:hover .arrow {
+    transform: translateX(4px); 
 }
 /* ==========================================================================
    MOBILE RESPONSIVE STYLES (For screens smaller than 768px wide)
@@ -553,5 +638,12 @@ footer {
     .ai-chat-trigger .elegant-bot-icon {
         width: 20px;
         height: 20px;
+    }
+    /* Mobile text responsive scale for press section */
+    .press-section {
+        padding: 60px 15px;
+    }
+    .press-quote {
+        font-size: 1.25rem; 
     }
 }

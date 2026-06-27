@@ -145,6 +145,118 @@ footer {
     margin: 0 auto;
     text-align: center;
 }
+/* Pop-Up Overlay (Hidden by default) */
+.modal-overlay {
+    display: none; /* Keeps it completely hidden until clicked */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.98); /* Luxury near-solid dark charcoal backdrop */
+    z-index: 1000; /* Forces it to stay on top of everything else on the page */
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* Allows scrolling if screen height is short */
+    padding: 4rem 2rem;
+}
+
+/* Close Button (X) */
+.close-btn {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 200;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1001;
+}
+
+.close-btn:hover {
+    color: #bc4749; /* Crimson highlight on hover */
+}
+
+/* Inside Pop-up Container Layout */
+.modal-content {
+    color: #ffffff;
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+}
+
+.modal-content h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.modal-content p {
+    color: #bfa8a3;
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Menus Side-by-Side Layout */
+.modal-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.modal-menu-card h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.modal-menu-card img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+/* Floating WhatsApp Button Styling */
+.whatsapp-floating-badge {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 12px 22px;
+    border-radius: 50px; /* Gives it a perfect pill shape */
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the SVG icon and text */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Ensures it floats entirely on top of backgrounds and text */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle Premium Micro-Hover */
+.whatsapp-floating-badge:hover {
+    background-color: #20ba5a; /* Slightly darker rich green */
+    transform: translateY(-4px); /* Lifts up dynamically */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+/* Ensure the SVG icon scales correctly inside the button */
+.whatsapp-floating-badge svg {
+    display: inline-block;
+    vertical-align: middle;
+}
 /* ==========================================================================
    MOBILE RESPONSIVE STYLES (For screens smaller than 768px wide)
    ========================================================================== */
@@ -186,5 +298,36 @@ footer {
     .reservation-form {
         max-width: 100%; /* Allows the form to fill the phone's screen width comfortably */
         padding: 0 10px;
+    }
+    /* Mobile responsive fix for pop-up menu */
+    .modal-overlay {
+        padding: 4rem 1rem;
+    }
+    .close-btn {
+        top: 15px;
+        right: 25px;
+        font-size: 2.5rem;
+    }
+    .modal-menu-grid {
+        grid-template-columns: 1fr; /* Stack lunch and dinner vertically on mobile */
+        gap: 30px;
+    }
+    /* Mobile responsive shift for the WhatsApp badge */
+    .whatsapp-floating-badge {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px; /* Creates a perfect circle padding padding */
+        border-radius: 50%;
+    }
+
+    /* Hides the "Book via WhatsApp" text string on small phone displays */
+    .whatsapp-floating-badge span {
+        display: none;
+    }
+    
+    /* Slightly enlarges the icon itself for easy thumb-tapping */
+    .whatsapp-floating-badge svg {
+        width: 22px;
+        height: 22px;
     }
 }

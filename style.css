@@ -257,6 +257,195 @@ footer {
     display: inline-block;
     vertical-align: middle;
 }
+/* --- AI Concierge System --- */
+.ai-chat-trigger {
+    position: fixed;
+    bottom: 90px; /* Increased from 30px to stack it above WhatsApp */
+    right: 30px;  /* Changed from left: 30px to match the right alignment */
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #bc4749;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    
+    display: inline-flex; 
+    align-items: center;
+    width: max-content; 
+    gap: 10px;
+    
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.ai-chat-trigger:hover {
+    transform: translateY(-3px);
+    background-color: #bc4749;
+}
+.elegant-bot-icon {
+    display: inline-block;
+    vertical-align: middle;
+    color: #bfa8a3; 
+    transition: color 0.3s ease;
+}
+
+.ai-chat-trigger:hover .elegant-bot-icon {
+    color: #ffffff;
+}
+
+.ai-avatar-container {
+    background-color: #222222;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333333;
+}
+
+/* Chat Box Panel Window container */
+.ai-chat-box {
+    position: fixed;
+    bottom: 150px; /* Raised so it doesn't overlap the stacked buttons */
+    right: 30px;   /* Changed from left: 30px to right: 30px */
+    width: 360px;
+    max-height: 500px;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-chat-box.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Header UI banner */
+.ai-chat-header {
+    background-color: #111111;
+    padding: 15px 20px;
+    border-bottom: 1px solid #222222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ai-bot-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ai-avatar { font-size: 1.5rem; }
+.ai-chat-header h4 { color: #ffffff; margin: 0; font-size: 0.95rem; font-weight: 500; }
+.ai-status { color: #25D366; font-size: 0.75rem; display: block; }
+.ai-close-btn { color: #888; font-size: 1.8rem; cursor: pointer; transition: color 0.2s; }
+.ai-close-btn:hover { color: #ffffff; }
+
+/* Conversation Content Window */
+.ai-chat-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Chat Message Bubbles layout style matching graphic UI references */
+.ai-message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    max-width: 85%;
+}
+
+.bot-msg {
+    background-color: #262626;
+    color: #e0e0e0;
+    align-self: flex-start;
+    border-top-left-radius: 2px;
+}
+
+.user-msg {
+    background-color: #bc4749;
+    color: #ffffff;
+    align-self: flex-end;
+    border-top-right-radius: 2px;
+}
+
+/* Multi Choice Interactive Action Chips */
+.ai-quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.ai-quick-chips button {
+    background-color: transparent;
+    border: 1px solid #444;
+    color: #cccccc;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ai-quick-chips button:hover {
+    border-color: #bc4749;
+    color: #ffffff;
+    background-color: rgba(188, 71, 73, 0.05);
+}
+
+/* Chat Text Input field footer bar */
+.ai-chat-footer {
+    padding: 12px 15px;
+    background-color: #111111;
+    border-top: 1px solid #222222;
+    display: flex;
+    gap: 10px;
+}
+
+.ai-chat-footer input {
+    flex-grow: 1;
+    background-color: #222222;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.ai-chat-footer button {
+    background-color: #bc4749;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
 /* ==========================================================================
    MOBILE RESPONSIVE STYLES (For screens smaller than 768px wide)
    ========================================================================== */
@@ -329,5 +518,40 @@ footer {
     .whatsapp-floating-badge svg {
         width: 22px;
         height: 22px;
+    }
+    /* Mobile adaptive layout for AI Assistant */
+    /* Mobile responsive override for right-side stacking */
+    .ai-chat-trigger {
+        bottom: 80px; /* Adjusted to stack above the mobile WhatsApp circle */
+        right: 20px;
+        left: auto;   /* Overrides the original desktop left rule */
+        padding: 14px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .ai-chat-box {
+        bottom: 140px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+        max-height: 420px;
+    }
+    /* Mobile responsive override for the vector trigger button layout */
+    .ai-chat-trigger {
+        bottom: 20px;
+        left: 20px;
+        padding: 14px; /* Balanced sizing match for the circle badge shape */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .ai-chat-trigger .elegant-bot-icon {
+        width: 20px;
+        height: 20px;
     }
 }

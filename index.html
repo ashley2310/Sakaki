@@ -19,7 +19,7 @@
         <nav>
         <a href="#about">About</a>
         <a href="javascript:void(0)" id="menuLink">Menu</a> <!-- Added this link -->
-        <a href="#gallery">Gallery</a>
+        <a href="javascript:void(0)" onclick="toggleFullGallery(true)">Gallery</a>
         <a href="#reservation">Reservations</a>
         <a href="#contact">Contact</a>
         </nav>
@@ -139,5 +139,64 @@
     <span>Book via WhatsApp</span>
     </a>
 
+    <!-- Full Album Overlay Modal (Opens via Nav Bar Link) -->
+<div id="fullGalleryModal" class="full-gallery-modal">
+    <div class="gallery-modal-header">
+        <h3>Sakakibara Gallery</h3>
+        <span class="close-gallery-btn" onclick="toggleFullGallery(false)">&times; Close</span>
+    </div>
+
+    <div class="gallery-modal-body">
+        <div class="gallery-expanded-grid">
+            <!-- 14 High-Res Photos Sorted into rows of 4 -->
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="chef_leung_profile.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="chef_ming_profile.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="chef_art_knifework.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="chef_art_sashimi.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="chef_art_scallop.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="chef_art_crab.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="Kagoshima_wagyu_beef.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="Otoro_fatty_tuna.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="Otoro_fatty_tuna2.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="signature_beef_otoro.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="Hashimi_radish_uni.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="fresh_prawn_uni_egg.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="golden_uni.jpg" alt="Gallery View"></div>
+            <div class="expanded-item" onclick="openLightbox(this)"><img src="fresh_prawn_uni.jpg" alt="Gallery View"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Focused Single Image Viewport (Lightbox) -->
+<div id="galleryLightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightboxImg" alt="Focused Photo Expansion">
+</div>
+<!-- Gallery Interaction Hub -->
+<script>
+    // Toggles the full screen 14-photo hidden album grid view overlay
+    function toggleFullGallery(show) {
+        const modal = document.getElementById("fullGalleryModal");
+        if (show) {
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden"; // Block lower landing section scroll
+        } else {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";   // Restore background interaction rules
+        }
+    }
+
+    // Handles expanding individual images into high contrast focus modes
+    function openLightbox(element) {
+        const lightbox = document.getElementById("galleryLightbox");
+        const lightboxImg = document.getElementById("lightboxImg");
+        lightboxImg.src = element.querySelector("img").src;
+        lightbox.classList.add("show");
+    }
+
+    function closeLightbox() {
+        document.getElementById("galleryLightbox").classList.remove("show");
+    }
+</script>
 </body>
 </html>

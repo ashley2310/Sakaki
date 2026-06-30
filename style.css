@@ -97,9 +97,9 @@ h2::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
-    z-index: 99999;
-    display: none; 
+    background-color: #ded9ce; /* 2-3 shades deeper; a rich, warm gallery sand */
+    z-index: 9999;
+    display: none;
     flex-direction: column;
 }
 
@@ -112,7 +112,7 @@ h2::after {
     justify-content: space-between;
     align-items: center;
     padding: 25px 40px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #cbc4b6; /* Adjusted darker to maintain perfect contrast */
 }
 
 .gallery-modal-body {
@@ -120,11 +120,6 @@ h2::after {
     overflow-y: auto;
     padding: 40px;
 }
-
-/* Strict Desktop Setup: Forces Exactly 4 landscape items per row */
-/* ==========================================================================
-   DESKTOP WEB VIEWPORTS: Updated 3-Column Album Settings
-   ========================================================================== */
 
 /* Strict Desktop Setup: Forces Exactly 3 items per row with generous spacing */
 .gallery-expanded-grid {
@@ -415,6 +410,19 @@ footer {
 .press-link-btn:hover .arrow {
     transform: translateX(4px); 
 }
+.contact-ig-link {
+    color: #3498db; /* Elegant, visible link blue that stands out on a dark background */
+    text-decoration: underline; /* Permanent underline so it clearly screams "click me" */
+    font-weight: 500;
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Desktop Hover Effect */
+.contact-ig-link:hover {
+    color: #5dade2; /* Lightens up beautifully when hovered */
+    transform: translateY(-1px); /* Subtle premium lift effect */
+}
 /* ==========================================================================
    MOBILE RESPONSIVE STYLES (For screens smaller than 768px wide)
    ========================================================================== */
@@ -529,5 +537,15 @@ footer {
         top: 20px;
         right: 25px;
         font-size: 35px;
+    }
+    /* Adds extra padding around the link so it's incredibly easy to tap on mobile */
+    .contact-ig-link {
+        padding: 6px 0; 
+        font-size: 1.05rem; /* Slightly larger text for mobile readability */
+    }
+    
+    /* Give the overall paragraph row a tiny bit of extra breathing room on mobile */
+    section#contact p:last-of-type {
+        margin-top: 12px; 
     }
 }
